@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+    # "зависит от",
+    depends_on:
+      - db
+    # переменные окружения
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/sws
+
+  # описание контейнера db
+  db:
+    image: postgres:13.7-alpine
+    container_name: db_container
+    ports:
+      - "6542:5432"
+    volumes:
+      - /var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=sws
+      - POSTGRES_USER=developer
+      - POSTGRES_PASSWORD=java

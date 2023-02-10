@@ -1,0 +1,190 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Seven Winds Studio API",
+    "version": "v0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "tags": [
+    {
+      "name": "UserController",
+      "description": "API для работы с пользователями"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": [
+          "UserController"
+        ],
+        "summary": "Добавление нового пользователя",
+        "description": "Сохранение информации о новом пользователе. Данные пользователя указаны в теле запроса.",
+        "requestBody": {
+          "description": "Данные запроса",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "integer",
+                    "description": "Идентификатор записи",
+                    "format": "int64",
+                    "readOnly": true,
+                    "example": 1
+                  },
+                  "firstName": {
+                    "type": "string",
+                    "description": "Имя пользователя",
+                    "example": "Adam"
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "description": "Фамилия пользователя",
+                    "example": "Smith"
+                  },
+                  "middleName": {
+                    "type": "string",
+                    "description": "Второе имя пользователя или отчетсво",
+                    "example": "John"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "Электронная почта",
+                    "example": "johndoe@email.com"
+                  },
+                  "phoneNumber": {
+                    "type": "string",
+                    "description": "Телефон пользователя",
+                    "example": "+44-12-3456-7890"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Информация сохранена"
+          }
+        }
+      }
+    },
+    "/users/{userId}": {
+      "get": {
+        "tags": [
+          "UserController"
+        ],
+        "summary": "Получение данных пользователя.",
+        "parameters": [
+          {
+            "description": "id пользователя",
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Статистика собрана",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "userId": {
+                        "type": "integer",
+                        "description": "Идентификатор записи",
+                        "format": "int64",
+                        "readOnly": true,
+                        "example": 1
+                      },
+                      "firstName": {
+                        "type": "string",
+                        "description": "Имя пользователя",
+                        "example": "Adam"
+                      },
+                      "lastName": {
+                        "type": "string",
+                        "description": "Фамилия пользователя",
+                        "example": "Smith"
+                      },
+                      "middleName": {
+                        "type": "string",
+                        "description": "Второе имя пользователя или отчетсво",
+                        "example": "John"
+                      },
+                      "email": {
+                        "type": "string",
+                        "description": "Электронная почта",
+                        "example": "johndoe@email.com"
+                      },
+                      "phoneNumber": {
+                        "type": "string",
+                        "description": "Телефон пользователя",
+                        "example": "+44-12-3456-7890"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserDto": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "description": "Идентификатор записи",
+            "format": "int64",
+            "readOnly": true,
+            "example": 1
+          },
+          "firstName": {
+            "type": "string",
+            "description": "Имя пользователя",
+            "example": "Adam"
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Фамилия пользователя",
+            "example": "Smith"
+          },
+          "middleName": {
+            "type": "string",
+            "description": "Второе имя пользователя или отчетсво",
+            "example": "John"
+          },
+          "email": {
+            "type": "string",
+            "description": "Электронная почта",
+            "example": "johndoe@email.com"
+          },
+          "phoneNumber": {
+            "type": "string",
+            "description": "Телефон пользователя",
+            "example": "+44-12-3456-7890"
+          }
+        }
+      }
+    }
+  }
+}
